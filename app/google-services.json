@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "802614649996",
+    "project_id": "superlist-589b8",
+    "storage_bucket": "superlist-589b8.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:802614649996:android:0edba16acb3810a0f107a9",
+        "android_client_info": {
+          "package_name": "com.example.superlist"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAvl-6H7G61S51iIQ98wHUH5M0BzAQ9NTs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
