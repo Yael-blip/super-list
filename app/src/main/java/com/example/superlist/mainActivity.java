@@ -12,10 +12,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.textfield.TextInputEditText;
 
 public class mainActivity extends AppCompatActivity {
-    FB_control fbctrl;
     Button login;
-    TextInputEditText email, password;
+    TextInputEditText email;
+    EditText password;
     Button forgot_pwd;
+    FB_control fbControl;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +24,9 @@ public class mainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         login = findViewById(R.id.login);
+        fbControl = new FB_control();
+        if (fbControl.isLogIn())
+            startActivity(new Intent(this, home_screen.class));
         login.setOnClickListener(v-> {
         // @Override
         // public void onClick(View v) {
@@ -40,36 +44,33 @@ public class mainActivity extends AppCompatActivity {
                  return;
              }
 
-            // create user
-            fbctrl = new FB_control();
-            fbctrl.createUser(
-                    email.getText().toString(),
-                    password.getText().toString(),
-                    mainActivity.this
-            );
+             fbControl.loginUser(email_str, password_str, this);
 
-            Toast.makeText(mainActivity.this, "You have been successfully signed in!", Toast.LENGTH_SHORT).show();
+        });
 
-            Intent intent = new Intent(mainActivity.this, home_screen.class);
+        Button create_acc = findViewById(R.id.create_account);
+        create_acc.setOnClickListener(v -> {
+            Intent intent = new Intent(mainActivity.this, SignUpUser.class);
             startActivity(intent);
         });
 
+
+
         forgot_pwd = findViewById(R.id.forgot_password);
         forgot_pwd.setOnClickListener(v -> {
-            LayoutInflater inflater = getLayoutInflater();
-            View recoverView = inflater.inflate(R.layout.activity_email_recovery, null);
+        LayoutInflater inflater = getLayoutInflater();
+        View recoverView = inflater.inflate(R.layout.activity_email_recovery, null);
+        final EditText emailEditText = recoverView.findViewById(R.id.recovery_email);
 
-            final EditText emailEditText = recoverView.findViewById(R.id.recovery_email);
-
-            new AlertDialog.Builder(this)
-                .setTitle("Send Temporary Password")
-                .setView(recoverView)
-                .setPositiveButton("Send", (dialog, which) -> {
-                    String email = emailEditText.getText().toString().trim();
-                })
-                .setNegativeButton("Cancel", null)
-                .show();
-            });
+        new AlertDialog.Builder(this)
+            .setTitle("Send Temporary Password")
+            .setView(recoverView)
+            .setPositiveButton("Send", (dialog, which) -> {
+                String email = emailEditText.getText().toString().trim();
+            })
+            .setNegativeButton("Cancel", null)
+            .show();
+        });
     }
 }
 

@@ -13,4 +13,10 @@ public class InputValidator {
             return false;
         return password.length() >= 6;
     }
+
+    public static boolean isPhoneNumberValid(String phone_number){
+        if (phone_number.length() != 10)
+            return false;
+        return true;
+    }
 }

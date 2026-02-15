@@ -31,7 +31,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     public void onBindViewHolder(@NonNull ProductAdapter.ProductViewHolder holder, int position) {
         Product currProduct = products.get(position);
         holder.productNameTextView.setText(currProduct.getName());
-        holder.InBasketView.setChecked(currProduct.isIn_basket());
+        holder.InBasketView.setChecked(currProduct.getIn_basket());
     }
 
     @Override

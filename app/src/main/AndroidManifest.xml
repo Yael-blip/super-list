@@ -12,6 +12,20 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SuperList">
         <activity
+            android:name=".supermarketView"
+            android:exported="false" />
+        <activity
+            android:name=".setSuper"
+            android:exported="false" />
+        <activity
+            android:name=".activity_add_friend"
+            android:exported="false" />
+        <activity
+            android:name=".SignUpUser"
+            android:exported="false" /> <!-- <activity -->
+        <!-- android:name=".signUp" -->
+        <!-- android:exported="false" /> -->
+        <activity
             android:name=".change_password"
             android:exported="false" />
         <activity
@@ -25,9 +39,6 @@
             android:exported="false" />
         <activity
             android:name=".email_recovery"
-            android:exported="false" />
-        <activity
-            android:name=".activity_list_view_old"
             android:exported="false" />
         <activity
             android:name=".product_view"

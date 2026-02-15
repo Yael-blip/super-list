@@ -15,6 +15,9 @@ public class activity_settings extends AppCompatActivity {
     Button infoButton;
     Button securityButton;
     Button locationButton;
+    Button logOutButton;
+    Button mySuper;
+    FB_control fbControl;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +42,24 @@ public class activity_settings extends AppCompatActivity {
             }
         });
 
+        logOutButton = findViewById(R.id.logOutButton);
+        fbControl = new FB_control();
+        logOutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fbControl.logOut(activity_settings.this);
+            }
+        });
+
+
+        mySuper = findViewById(R.id.mySuper);
+        mySuper.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(activity_settings.this, setSuper.class);
+                startActivity(intent);
+            }
+        });
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
